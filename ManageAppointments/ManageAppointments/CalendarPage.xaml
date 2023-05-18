@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:ManageAppointments"
+             xmlns:scheduler="clr-namespace:Syncfusion.Maui.Scheduler;assembly=Syncfusion.Maui.Scheduler"
+             x:Class="ManageAppointments.CalendarPage">
+    <ContentPage.BindingContext>
+        <local:SchedulerViewModel/>
+    </ContentPage.BindingContext>
+    <Border Stroke="#F6F6F6" StrokeThickness="2">
+        <scheduler:SfScheduler View="Week" AppointmentsSource="{Binding Events}" DisplayDate="{Binding DisplayDate}">
+            <scheduler:SfScheduler.AppointmentMapping>
+                <scheduler:SchedulerAppointmentMapping
+                Subject="EventName"
+                StartTime="From"
+                EndTime="To"
+                Background="Background"
+                IsAllDay="IsAllDay"
+               />
+            </scheduler:SfScheduler.AppointmentMapping>
+        </scheduler:SfScheduler>
+    </Border>
+</ContentPage>

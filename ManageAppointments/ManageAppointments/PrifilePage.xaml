@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ManageAppointments"
+             xmlns:dataform="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm"
+             x:Class="ManageAppointments.PrifilePage">
+    <ContentPage.BindingContext>
+        <local:ProfileViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <dataform:SfDataForm x:Name="dataForm" IsReadOnly="True"  DataObject="{Binding ProfileDetails}"/>
+    </ContentPage.Content>
+</ContentPage>

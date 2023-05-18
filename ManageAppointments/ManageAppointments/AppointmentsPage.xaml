@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ManageAppointments"
+             xmlns:scheduler="clr-namespace:Syncfusion.Maui.Scheduler;assembly=Syncfusion.Maui.Scheduler"
+             x:Class="ManageAppointments.AppointmentsPage">
+    <ContentPage.BindingContext>
+        <local:SchedulerViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid RowDefinitions="60,*">
+            <Grid.Resources>
+                <local:MonthToImageConverter x:Key="MonthToImageConverter"/>
+                <DataTemplate x:Key="AgendaHeaderTemplate">
+                    <Grid>
+                        <Image Aspect="Fill" Source="{Binding Converter={StaticResource MonthToImageConverter}}"/>
+                        <Label x:Name="label" HorizontalOptions="Start" VerticalOptions="Start" TextColor="Black" FontSize="16" Padding="55, 20, 0, 0" Text="{Binding StringFormat='{0:MMMM yyyy}'}"/>
+                    </Grid>
+                </DataTemplate>
+            </Grid.Resources>
+            <Grid ColumnDefinitions="0.5*,0.5*" HeightRequest="50" VerticalOptions="Start">
+            <VerticalStackLayout  Background="Transparent">
+                <Button x:Name="Upcoming" BorderColor="Transparent" TextColor="Black" Background="Transparent" Margin="5" Text="Upcoming appointments" Clicked="Button_Clicked"/>
+                <BoxView Color="{StaticResource Primary}" x:Name="UpcomingBorder"
+             HeightRequest="2"
+             HorizontalOptions="Fill" />
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Column="1">
+                <Button  x:Name="Past" BorderColor="Transparent" TextColor="Black" Background="Transparent" Margin="5" Text="Past appointments" Clicked="Button_Clicked"/>
+                <BoxView Color="Transparent" x:Name="PastBordeer"
+             HeightRequest="2"
+             HorizontalOptions="Fill" />
+            </VerticalStackLayout>
+            </Grid>
+            <Grid Background="#F6F6F6" Grid.Row="1" >
+                <scheduler:SfScheduler View="Agenda" x:Name="Scheduler" AppointmentsSource="{Binding Events}" DisplayDate="{Binding DisplayDate}">
+                    <scheduler:SfScheduler.AppointmentMapping>
+                        <scheduler:SchedulerAppointmentMapping
+                Subject="EventName"
+                StartTime="From"
+                EndTime="To"
+                Background="Background"
+                IsAllDay="IsAllDay"
+               />
+                    </scheduler:SfScheduler.AppointmentMapping>
+                    <scheduler:SfScheduler.AgendaView>
+                        <scheduler:SchedulerAgendaView MonthHeaderTemplate="{StaticResource AgendaHeaderTemplate}" />
+                    </scheduler:SfScheduler.AgendaView>
+                </scheduler:SfScheduler>
+             
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
