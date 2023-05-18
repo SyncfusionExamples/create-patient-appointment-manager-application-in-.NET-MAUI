@@ -71,6 +71,12 @@
 		<PackageReference Include="Syncfusion.Maui.Scheduler" Version="21.2.4" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="ProfilePage.xaml.cs">
+	    <DependentUpon>ProfilePage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 
 	<ItemGroup>
 	  <MauiXaml Update="AppointmentsPage.xaml">
@@ -88,7 +94,7 @@
 	  <MauiXaml Update="LogoutPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="PrifilePage.xaml">
+	  <MauiXaml Update="ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

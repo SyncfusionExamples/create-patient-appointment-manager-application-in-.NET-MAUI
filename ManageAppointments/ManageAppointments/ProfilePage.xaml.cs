@@ -1,33 +1,17 @@
 ﻿using Microsoft.Maui.Controls.Shapes;
 using Syncfusion.Maui.DataForm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace ManageAppointments
 {
-	public partial class PrifilePage : ContentPage
+	public partial class ProfilePage : ContentPage
 	{
-		public PrifilePage()
+		public ProfilePage()
 		{
 			InitializeComponent();
 			this.dataForm.RegisterEditor("Image", new ImageEditor());
             dataForm.RegisterEditor("Country", DataFormEditorType.AutoComplete);
             this.dataForm.ItemsSourceProvider = new DataFormItemsSourceProvider();
             this.dataForm.RegisterEditor("Gender", DataFormEditorType.RadioGroup);
-            this.dataForm.GenerateDataFormItem += DataForm_GenerateDataFormItem;
-
-        }
-
-        private void DataForm_GenerateDataFormItem(object sender, GenerateDataFormItemEventArgs e)
-        {
-            if(e.DataFormItem != null) 
-            {
-                e.DataFormItem.Background = Color.FromHex("#F6F6F6");   
-            }
         }
     }
 

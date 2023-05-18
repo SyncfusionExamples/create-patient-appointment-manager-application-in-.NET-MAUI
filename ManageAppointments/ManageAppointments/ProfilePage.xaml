@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ManageAppointments"
              xmlns:dataform="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm"
-             x:Class="ManageAppointments.PrifilePage">
+             x:Class="ManageAppointments.ProfilePage">
     <ContentPage.BindingContext>
         <local:ProfileViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <dataform:SfDataForm x:Name="dataForm" IsReadOnly="True"  DataObject="{Binding ProfileDetails}"/>
+        <dataform:SfDataForm x:Name="dataForm" IsReadOnly="True" Background="#F6F6F6"  DataObject="{Binding ProfileDetails}"/>
     </ContentPage.Content>
 </ContentPage>

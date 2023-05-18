@@ -37,7 +37,6 @@ namespace ManageAppointments
             this.subjects = GetSubjects();
             this.colors = GetColors();
             this.IntializeAppoitments();
-         
             this.DisplayDate = DateTime.Now.Date.AddHours(8).AddMinutes(50);
         }
 
@@ -70,14 +69,10 @@ namespace ManageAppointments
                 "General Check-Up",
                 "Follow-up Consultation",
                 "Diagnostic Test Review",
-                "Vaccination Appointment",
-                "Medication Consultation",
-                "Physical Therapy Session",
-                "Wellness Counseling",
-                "Nutrition Consultation",
-                "Dermatology Consultation",
-                "Orthopedic Consultation",
-                "Ophthalmology Appointment"
+                "Hypertension",
+                "Heart operation",
+                "Angina",
+                "Rheumatic heart disease",
             });
 
             return subjects;
@@ -125,10 +120,9 @@ namespace ManageAppointments
                     int hour = randomTime.Next((int)randomTimeCollection[additionalAppointmentIndex].X, (int)randomTimeCollection[additionalAppointmentIndex].Y);
                     meeting.From = new DateTime(date.Year, date.Month, date.Day, hour, 0, 0);
                     meeting.To = meeting.From.AddHours(1);
-                    meeting.EventName = this.subjects[randomTime.Next(9)];
-                    meeting.Background = this.colors[randomTime.Next(8)];
+                    meeting.EventName = this.subjects[randomTime.Next(this.subjects.Count)];
+                    meeting.Background = this.colors[randomTime.Next(this.colors.Count)];
                     var color = ((SolidColorBrush)meeting.Background).Color.ToHex() + "AA";
-                    meeting.BackgroundColor = Color.FromArgb(color);
                     meeting.IsAllDay = false;
                     this.Events.Add(meeting);
                 }

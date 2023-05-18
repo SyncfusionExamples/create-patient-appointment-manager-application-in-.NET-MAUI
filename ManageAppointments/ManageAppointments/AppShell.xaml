@@ -11,7 +11,7 @@
   
 
     <FlyoutItem Title="Profile" >
-        <ShellContent ContentTemplate="{DataTemplate local:PrifilePage}" />
+        <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" />
     </FlyoutItem>
     <FlyoutItem Title="Scheduler">
         <ShellContent ContentTemplate="{DataTemplate local:CalendarPage}"/>

@@ -41,9 +41,5 @@ namespace ManageAppointments
         /// Gets or sets the value to display the background.
         /// </summary>
         public Brush Background { get; set; }
-
-        public Color BackgroundColor { get; set; }
-
-
     }
 }
