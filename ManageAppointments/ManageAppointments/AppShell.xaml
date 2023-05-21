@@ -4,20 +4,16 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ManageAppointments"  Shell.TitleColor="Transparent" Shell.TabBarTitleColor="Transparent"
-    Shell.FlyoutBehavior="Locked" Shell.FlyoutItemIsVisible="True"    >
-    <Shell.TitleView>
-        <Grid HeightRequest="1" Background="Transparent"/>
-    </Shell.TitleView>
-  
-
-    <FlyoutItem Title="Profile" >
-        <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" />
+    Shell.FlyoutBehavior="Locked" Shell.FlyoutItemIsVisible="True" >
+    <FlyoutItem Title="Profile"  >
+        <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}">
+        </ShellContent>
     </FlyoutItem>
-    <FlyoutItem Title="Scheduler">
+    <FlyoutItem Title="Scheduler" >
         <ShellContent ContentTemplate="{DataTemplate local:CalendarPage}"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="Appointments">
+    <FlyoutItem Title="Appointments" Icon="appointments.png">
         <ShellContent ContentTemplate="{DataTemplate local:AppointmentsPage}"/>
     </FlyoutItem>
 

@@ -119,10 +119,10 @@ namespace ManageAppointments
                     var meeting = new Appointment();
                     int hour = randomTime.Next((int)randomTimeCollection[additionalAppointmentIndex].X, (int)randomTimeCollection[additionalAppointmentIndex].Y);
                     meeting.From = new DateTime(date.Year, date.Month, date.Day, hour, 0, 0);
-                    meeting.To = meeting.From.AddHours(1);
+                    meeting.To = meeting.From.AddHours(2);
                     meeting.EventName = this.subjects[randomTime.Next(this.subjects.Count)];
                     meeting.Background = this.colors[randomTime.Next(this.colors.Count)];
-                    var color = ((SolidColorBrush)meeting.Background).Color.ToHex() + "AA";
+                    meeting.Location = "health.png";
                     meeting.IsAllDay = false;
                     this.Events.Add(meeting);
                 }
