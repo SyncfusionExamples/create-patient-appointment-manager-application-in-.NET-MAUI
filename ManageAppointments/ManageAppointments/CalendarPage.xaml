@@ -7,6 +7,14 @@
     <ContentPage.BindingContext>
         <local:SchedulerViewModel/>
     </ContentPage.BindingContext>
+    <!--<ContentPage.Resources>
+        <DataTemplate x:Key="dayAppointmentTemplate">
+            <Grid ColumnDefinitions="0.3*,0.7*" Background="{Binding Background}">
+                <Image Aspect="AspectFit" VerticalOptions="Center" Margin="0, 10, 0, 10" HorizontalOptions="Center" HeightRequest="{OnPlatform Android= 30, iOS=30, MacCatalyst=50, UWP=50}" WidthRequest="{OnPlatform Android= 30, iOS=30, MacCatalyst=50,UWP=50}" Source="{Binding DataItem.Location}"/>
+                <Label Text="{Binding DataItem.EventName}" VerticalOptions="Start" Grid.Column="1" TextColor="White" LineBreakMode="WordWrap" Margin="3,3,3,0" FontSize="10" />
+            </Grid>
+        </DataTemplate>
+    </ContentPage.Resources>-->
     <Border Stroke="#F6F6F6" StrokeThickness="2">
         <scheduler:SfScheduler View="Week" AppointmentsSource="{Binding Events}" DisplayDate="{Binding DisplayDate}">
             <scheduler:SfScheduler.AppointmentMapping>
@@ -18,6 +26,10 @@
                 IsAllDay="IsAllDay"
                />
             </scheduler:SfScheduler.AppointmentMapping>
+            <!--<scheduler:SfScheduler.DaysView>
+                <scheduler:SchedulerDaysView
+                                 AppointmentTemplate="{StaticResource dayAppointmentTemplate}"/>
+            </scheduler:SfScheduler.DaysView>-->
         </scheduler:SfScheduler>
     </Border>
 </ContentPage>

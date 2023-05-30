@@ -60,11 +60,14 @@
 	  <None Remove="Resources\Images\july.png" />
 	  <None Remove="Resources\Images\june.png" />
 	  <None Remove="Resources\Images\login.png" />
+	  <None Remove="Resources\Images\logout.png" />
 	  <None Remove="Resources\Images\march.png" />
 	  <None Remove="Resources\Images\may.png" />
 	  <None Remove="Resources\Images\november.png" />
 	  <None Remove="Resources\Images\october.png" />
 	  <None Remove="Resources\Images\profile.png" />
+	  <None Remove="Resources\Images\profilepage.png" />
+	  <None Remove="Resources\Images\scheduler.png" />
 	  <None Remove="Resources\Images\september.png" />
 	</ItemGroup>
 
