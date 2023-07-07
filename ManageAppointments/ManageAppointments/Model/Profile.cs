@@ -31,7 +31,9 @@ namespace ManageAppointments
         public string Image { get; set; }
         public string Name { get; set; }    
         public DateTime DOB { get; set; }
-        public string Gender { get; set; }    
+        public string Gender { get; set; }
+
+        [Display(Name = "Blood Group")]
         public string BloodGroup { get; set; }  
         public string Email { get; set; }   
         public string Phone { get; set; }
@@ -42,7 +44,11 @@ namespace ManageAppointments
         public string State { get; set; }
         public string PostalCode { get; set; }
         public string Country { get; set; }
-        public string EmergencyContactName   { get; set; } 
+
+        [Display(Name = "Emergency Contact Name")]
+        public string EmergencyContactName   { get; set; }
+
+        [Display(Name = "Emergency Contact Number")]
         public string EmergencyContactNumber { get; set; }
     }
 }

@@ -8,7 +8,7 @@
         <local:SchedulerViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid RowDefinitions="60,*">
+        <Grid RowDefinitions="52,*">
             <Grid.Resources>
                 <local:MonthToImageConverter x:Key="MonthToImageConverter"/>
                 <DataTemplate x:Key="AgendaHeaderTemplate">
@@ -20,19 +20,19 @@
             </Grid.Resources>
             <Grid ColumnDefinitions="0.5*,0.5*" HeightRequest="50" VerticalOptions="Start">
             <VerticalStackLayout  Background="Transparent">
-                <Button x:Name="Upcoming" BorderColor="Transparent" TextColor="Black" Background="Transparent" Margin="5" Text="Upcoming appointments" Clicked="Button_Clicked"/>
+                    <Button x:Name="Upcoming" BorderColor="Transparent" TextColor="Black" Background="Transparent" HeightRequest="50" Text="Upcoming appointments" Clicked="Button_Clicked"/>
                 <BoxView Color="{StaticResource Primary}" x:Name="UpcomingBorder"
              HeightRequest="2"
              HorizontalOptions="Fill" />
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Column="1">
-                <Button  x:Name="Past" BorderColor="Transparent" TextColor="Black" Background="Transparent" Margin="5" Text="Past appointments" Clicked="Button_Clicked"/>
+                    <Button  x:Name="Past" BorderColor="Transparent" TextColor="Black" Background="Transparent" HeightRequest="50" Text="Past appointments" Clicked="Button_Clicked"/>
                 <BoxView Color="Transparent" x:Name="PastBordeer"
              HeightRequest="2"
              HorizontalOptions="Fill" />
             </VerticalStackLayout>
             </Grid>
-            <Grid Background="#F6F6F6" Grid.Row="1" >
+            <Grid Background="#f8f7ff" Grid.Row="1" >
                 <scheduler:SfScheduler View="Agenda" x:Name="Scheduler" AppointmentsSource="{Binding Events}" DisplayDate="{Binding DisplayDate}">
                     <scheduler:SfScheduler.AppointmentMapping>
                         <scheduler:SchedulerAppointmentMapping

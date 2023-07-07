@@ -15,7 +15,7 @@
             </Grid>
         </DataTemplate>
     </ContentPage.Resources>-->
-    <Border Stroke="#F6F6F6" StrokeThickness="2">
+    <Border Stroke="#F6F6F6" Background="#f8f7ff" StrokeThickness="2">
         <scheduler:SfScheduler View="Week" AppointmentsSource="{Binding Events}" DisplayDate="{Binding DisplayDate}">
             <scheduler:SfScheduler.AppointmentMapping>
                 <scheduler:SchedulerAppointmentMapping
