@@ -53,9 +53,13 @@
 	  <None Remove="Resources\Images\appointments.png" />
 	  <None Remove="Resources\Images\april.png" />
 	  <None Remove="Resources\Images\august.png" />
+	  <None Remove="Resources\Images\body.png" />
+	  <None Remove="Resources\Images\checkup.png" />
 	  <None Remove="Resources\Images\december.png" />
+	  <None Remove="Resources\Images\diagnostic.png" />
 	  <None Remove="Resources\Images\february.png" />
-	  <None Remove="Resources\Images\health.png" />
+	  <None Remove="Resources\Images\glucose.png" />
+	  <None Remove="Resources\Images\heart.png" />
 	  <None Remove="Resources\Images\january.png" />
 	  <None Remove="Resources\Images\july.png" />
 	  <None Remove="Resources\Images\june.png" />
@@ -67,6 +71,7 @@
 	  <None Remove="Resources\Images\october.png" />
 	  <None Remove="Resources\Images\profile.png" />
 	  <None Remove="Resources\Images\profilepage.png" />
+	  <None Remove="Resources\Images\respiratory.png" />
 	  <None Remove="Resources\Images\scheduler.png" />
 	  <None Remove="Resources\Images\september.png" />
 	</ItemGroup>

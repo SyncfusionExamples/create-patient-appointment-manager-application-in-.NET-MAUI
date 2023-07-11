@@ -20,10 +20,6 @@ namespace ManageAppointments
         /// </summary>
         private List<string> subjects;
 
-        /// <summary>
-        /// color collection
-        /// </summary>
-        private List<Brush> colors;
 
         #endregion
 
@@ -35,7 +31,6 @@ namespace ManageAppointments
         public SchedulerViewModel()
         {
             this.subjects = GetSubjects();
-            this.colors = GetColors();
             this.IntializeAppoitments();
             this.DisplayDate = DateTime.Now.Date.AddHours(8).AddMinutes(50);
         }
@@ -67,12 +62,11 @@ namespace ManageAppointments
             subjects.AddRange(new List<string>()
             {
                 "General Check-Up",
-                "Follow-up Consultation",
-                "Diagnostic Test Review",
-                "Hypertension",
-                "Heart operation",
+                "Asthma",
+                "Diagnostic report",
+                "Diabetes",
+                "Hypothermia",
                 "Angina",
-                "Rheumatic heart disease",
             });
 
             return subjects;
@@ -82,21 +76,33 @@ namespace ManageAppointments
         /// Method to get the colors
         /// </summary>
         /// <returns>Returns the colors collection</returns>
-        private List<Brush> GetColors()
+        private Brush GetColor(string eventName)
         {
-            List<Brush> colors = new List<Brush>();
-            colors.AddRange(new List<Brush>()
+            if (eventName.Equals("General Check-Up"))
             {
-                new SolidColorBrush(Color.FromArgb("#FF8B1FA9")),
-                new SolidColorBrush(Color.FromArgb("#FFD20100")),
-                new SolidColorBrush(Color.FromArgb("#FFFC571D")),
-                new SolidColorBrush(Color.FromArgb("#FF36B37B")),
-                new SolidColorBrush(Color.FromArgb("#FF3D4FB5")),
-                new SolidColorBrush(Color.FromArgb("#FFE47C73")),
-                new SolidColorBrush(Color.FromArgb("#FF85461E")),
-                new SolidColorBrush(Color.FromArgb("#FF0F8644")),
-            });
-            return colors;
+                return new SolidColorBrush(Color.FromArgb("#1000C2"));
+            }
+            else if (eventName.Equals("Asthma"))
+            {
+                return new SolidColorBrush(Color.FromArgb("#136154"));
+            }
+            else if (eventName.Equals("Diagnostic report"))
+            {
+                return new SolidColorBrush(Color.FromArgb("#6A01F5"));
+            }
+            else if (eventName.Equals("Diabetes"))
+            {
+                return new SolidColorBrush(Color.FromArgb("#803500"));
+            }
+            else if (eventName.Equals("Hypothermia"))
+            {
+                return new SolidColorBrush(Color.FromArgb("#1D55AA"));
+            }
+            else if (eventName.Equals("Angina"))
+            {
+                return new SolidColorBrush(Color.FromArgb("#8800D1"));
+            }
+            return new SolidColorBrush(Color.FromArgb("#1000C2"));
         }
 
         /// <summary>
@@ -105,47 +111,74 @@ namespace ManageAppointments
         private void IntializeAppoitments()
         {
             this.Events = new ObservableCollection<Appointment>();
-            Random randomTime = new();
-            List<Point> randomTimeCollection = this.GettingTimeRanges();
+            Random random = new();
+            List<int> randomTimeCollection = this.GettingTimeRanges();
 
             DateTime date;
-            DateTime dateFrom = DateTime.Now.AddDays(-15);
-            DateTime dateTo = DateTime.Now.AddDays(15);
-
-            for (date = dateFrom; date < dateTo; date = date.AddDays(3))
+            DateTime dateFrom = DateTime.Now.AddDays(-2);
+            DateTime dateTo = DateTime.Now.AddDays(3);
+            int i = 0;
+            for (date = dateFrom; date < dateTo; date = date.AddDays(1))
             {
-                for (int additionalAppointmentIndex = 0; additionalAppointmentIndex < 1; additionalAppointmentIndex++)
-                {
-                    var meeting = new Appointment();
-                    int hour = randomTime.Next((int)randomTimeCollection[additionalAppointmentIndex].X, (int)randomTimeCollection[additionalAppointmentIndex].Y);
-                    meeting.From = new DateTime(date.Year, date.Month, date.Day, hour, 0, 0);
-                    meeting.To = meeting.From.AddHours(2);
-                    meeting.EventName = this.subjects[randomTime.Next(this.subjects.Count)];
-                    meeting.Background = this.colors[randomTime.Next(this.colors.Count)];
-                    meeting.Location = "health.png";
-                    meeting.IsAllDay = false;
-                    this.Events.Add(meeting);
-                }
+                var meeting = new Appointment();
+                int hour = randomTimeCollection[random.Next(randomTimeCollection.Count)];
+                meeting.From = new DateTime(date.Year, date.Month, date.Day, hour, 0, 0);
+                meeting.To = meeting.From.AddHours(2);
+                meeting.EventName = this.subjects.ElementAt(i);
+                meeting.Background = this.GetColor(meeting.EventName);
+                meeting.Location = this.GetImage(meeting.EventName);
+                meeting.IsAllDay = false;
+                this.Events.Add(meeting);
+                i++;
             }
+        }
+
+        private string GetImage(string eventName)
+        {
+            if (eventName.Equals("General Check-Up"))
+            {
+                return "checkup.png";
+            }
+            else if (eventName.Equals("Asthma"))
+            {
+                return "respiratory.png";
+            }
+            else if (eventName.Equals("Diagnostic report"))
+            {
+                return "diagnostic.png";
+            }
+            else if (eventName.Equals("Diabetes"))
+            {
+                return "glucose.png";
+            }
+            else if (eventName.Equals("Hypothermia"))
+            {
+                return "body.png";
+            }
+            else if (eventName.Equals("Angina"))
+            {
+                return "heart.png";
+            }
+            return "checkup.png";
         }
 
         /// <summary>
         /// Method for get timing range.
         /// </summary>
         /// <returns>return time collection</returns>
-        private List<Point> GettingTimeRanges()
+        private List<int> GettingTimeRanges()
         {
-            List<Point> randomTimeCollection = new()
+            List<int> randomTimeCollection = new()
             {
-                new Point(9, 11),
-                new Point(12, 14),
-                new Point(15, 17)
+               10,
+               14,
+               16
             };
 
             return randomTimeCollection;
         }
 
-        
+
 
         #endregion
     }
