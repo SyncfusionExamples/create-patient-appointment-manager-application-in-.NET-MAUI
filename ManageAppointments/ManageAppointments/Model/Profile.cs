@@ -12,7 +12,7 @@ namespace ManageAppointments
     {
         public ProfileDetails()
         {
-            this.Name = "Dr. Fiona Gina";
+            this.Name = "Dr.Fiona Gina";
             this.DOB = new DateTime(1992, 1, 1);
             this.Gender = "Female";
             this.BloodGroup = "O+";
