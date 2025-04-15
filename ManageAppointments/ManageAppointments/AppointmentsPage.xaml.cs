@@ -14,7 +14,13 @@ namespace ManageAppointments
 		public AppointmentsPage()
 		{
 			InitializeComponent();
-            var upcomingEvents = (this.BindingContext as SchedulerViewModel).Events.Where(x => (x as Appointment).From > DateTime.Now).ToList();
+            var viewModel = this.BindingContext as SchedulerViewModel;
+            var events = viewModel?.Events ?? Enumerable.Empty<Appointment>();
+
+            var upcomingEvents = events
+                .Where(x => x.From > DateTime.Now)
+                .ToList();
+
             this.Scheduler.AppointmentsSource = upcomingEvents;
             this.Scheduler.MinimumDateTime = DateTime.Now;
         }
@@ -28,8 +34,13 @@ namespace ManageAppointments
 
             if (button != null && button.Text == "Upcoming appointments")
 			{
-               var upcomingEvents =  (this.BindingContext as SchedulerViewModel).Events.Where(x=>(x as Appointment).From > DateTime.Now).ToList();
-				if(upcomingAppointmentBorder !=null)
+                var viewModel = this.BindingContext as SchedulerViewModel;
+                var events = viewModel?.Events ?? Enumerable.Empty<Appointment>();
+
+                var upcomingEvents = events
+                    .Where(appointment => appointment.From > DateTime.Now)
+                    .ToList();
+                if (upcomingAppointmentBorder !=null)
 				{
                     upcomingAppointmentBorder.Color = Color.FromArgb("#512BD4");	
                 }
@@ -44,7 +55,12 @@ namespace ManageAppointments
             }
             else if (button != null && button.Text == "Past appointments")
 			{
-                var pastAppointments = (this.BindingContext as SchedulerViewModel).Events.Where(x => (x as Appointment).From < DateTime.Now).ToList();
+                var viewModel = this.BindingContext as SchedulerViewModel;
+                var events = viewModel?.Events?.OfType<Appointment>() ?? Enumerable.Empty<Appointment>();
+
+                var pastAppointments = events
+                    .Where(appointment => appointment.From < DateTime.Now)
+                    .ToList();
 
                 if (pastAppointmentBordeer != null)
                 {

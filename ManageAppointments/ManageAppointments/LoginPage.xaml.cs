@@ -16,20 +16,33 @@ namespace ManageAppointments
 
         private async void loginButton_Clicked(object sender, EventArgs e)
         {
-            if (this.loginForm != null && App.Current?.MainPage != null)
+            if (this.loginForm != null && App.Current?.Windows[0].Page != null)
             {
                 if (this.loginForm.Validate())
                 {
-                    App.Current.MainPage = new NavigationPage();
-                    App.Current.MainPage.Navigation.PushAsync(new AppShell());
+                    App.Current.Windows[0].Page = new NavigationPage();
+                    App.Current.Windows[0].Page?.Navigation.PushModalAsync(new AppShell());
 
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("", "Please enter the required details", "OK");
+                    await DisplayAlert("", "Please enter the required details", "OK");
                 }
             }
 
+        }
+
+        /// <summary>
+        /// Displays an alert dialog to the user.
+        /// </summary>
+        /// <param name="title">The title of the alert dialog.</param>
+        /// <param name="message">The message to display.</param>
+        /// <param name="cancel">The text for the cancel button.</param>
+        /// <returns>A task representing the asynchronous alert display operation.</returns>
+        private new Task DisplayAlert(string title, string message, string cancel)
+        {
+            return App.Current?.Windows?[0]?.Page!.DisplayAlert(title, message, cancel)
+                   ?? Task.FromResult(false);
         }
     }
 }

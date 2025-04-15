@@ -8,6 +8,6 @@
         <local:ProfileViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <dataform:SfDataForm x:Name="dataForm" IsReadOnly="True" Background="#f8f7ff"  DataObject="{Binding ProfileDetails}"/>
+        <dataform:SfDataForm x:Name="dataForm" IsReadOnly="True" Background="#f8f7ff" x:DataType="local:ProfileViewModel" DataObject="{Binding ProfileDetails}"/>
     </ContentPage.Content>
 </ContentPage>

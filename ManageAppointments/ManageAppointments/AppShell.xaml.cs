@@ -7,9 +7,17 @@ public partial class AppShell : Shell
 		InitializeComponent();
 	}
 
-    private  void MenuItem_Clicked(object sender, EventArgs e)
+    private void MenuItem_Clicked(object sender, EventArgs e)
     {
-        App.Current.MainPage = new NavigationPage();
-        App.Current.MainPage.Navigation.PushAsync(new LoginPage());
+        var loginPage = new LoginPage();
+        var navPage = new NavigationPage(loginPage);
+
+        var currentApp = App.Current;
+
+        if (currentApp?.Windows?.Count > 0 && currentApp.Windows[0] != null)
+        {
+            currentApp.Windows[0].Page = navPage;
+        }
     }
+
 }

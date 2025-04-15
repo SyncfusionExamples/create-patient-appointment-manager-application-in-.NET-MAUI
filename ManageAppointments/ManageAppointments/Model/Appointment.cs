@@ -14,7 +14,7 @@ namespace ManageAppointments
         private bool isAllDay;
         private string eventName;
         private Brush background;
-        public string location;
+        public string? location;
         public Appointment()
         {
             this.from = DateTime.Now;
@@ -76,7 +76,7 @@ namespace ManageAppointments
             set { this.background = value; }
         }
 
-        public string Location
+        public string? Location
         {
             get { return this.location; }
             set { this.location = value; }
