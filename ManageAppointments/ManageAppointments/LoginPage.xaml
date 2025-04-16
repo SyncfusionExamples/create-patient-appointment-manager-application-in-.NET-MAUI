@@ -20,11 +20,14 @@
             <Image Source="login.png" Grid.Row="0"  Grid.Column="0"  HorizontalOptions="Center"  Aspect="AspectFit"/>
         </Border>
 
-        <Frame CornerRadius="10" Grid.Column="{OnPlatform Default=0, WinUI=1,MacCatalyst=1}" HorizontalOptions="Start"  BorderColor="White" HeightRequest="420" Background="#f2e6ff"
+        <Border Stroke="White" StrokeThickness="2" Padding="20" Grid.Column="{OnPlatform Default=0, WinUI=1,MacCatalyst=1}" HorizontalOptions="Start" HeightRequest="420" Background="#f2e6ff"
                   Grid.Row="0" 
                   WidthRequest="380" VerticalOptions="Center"
                   Grid.ColumnSpan="{OnPlatform Default=2, WinUI=1,MacCatalyst=1}" 
                   Grid.RowSpan="2" >
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10" />
+            </Border.StrokeShape>
             <Grid IsClippedToBounds="True" HeightRequest="420" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="90"/>
@@ -44,7 +47,7 @@
                 </Label>
 
                 <dataForm:SfDataForm x:Name="loginForm"   LayoutType="TextInputLayout" 
-                    Grid.Row="1"  DataObject="{Binding LoginFormModel}"  TextInputLayoutSettings="{dataForm:TextInputLayoutSettings FocusedStroke=#a64dff}"
+                    Grid.Row="1" x:DataType="local:LoginFormModel"  DataObject="{Binding LoginFormModel}"  TextInputLayoutSettings="{dataForm:TextInputLayoutSettings FocusedStroke=#a64dff}"
                                      ValidationMode="PropertyChanged"  >
                 </dataForm:SfDataForm>
 
@@ -62,6 +65,6 @@
                         Grid.Row="3" Background="#a64dff"/>
 
             </Grid>
-        </Frame>
+        </Border>
     </Grid>
 </ContentPage>

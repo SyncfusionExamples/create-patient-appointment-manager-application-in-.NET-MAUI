@@ -28,8 +28,8 @@ namespace ManageAppointments
         }
 
         [DataFormDisplayOptions(ShowLabel =false)]
-        public string Image { get; set; }
-        public string Name { get; set; }    
+        public string Image { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;    
         public DateTime DOB { get; set; }
         public string Gender { get; set; }
 

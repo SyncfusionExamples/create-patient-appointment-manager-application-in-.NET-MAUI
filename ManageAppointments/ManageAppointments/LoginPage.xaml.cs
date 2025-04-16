@@ -14,7 +14,7 @@ namespace ManageAppointments
             InitializeComponent();
         }
 
-        private async void loginButton_Clicked(object sender, EventArgs e)
+        private async void loginButton_Clicked(object? sender, EventArgs e)
         {
             if (this.loginForm != null && App.Current?.MainPage != null)
             {
@@ -26,10 +26,9 @@ namespace ManageAppointments
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("", "Please enter the required details", "OK");
+                    await DisplayAlert("", "Please enter the required details", "OK");
                 }
             }
-
         }
     }
 }
