@@ -13,8 +13,8 @@
                 <local:MonthToImageConverter x:Key="MonthToImageConverter"/>
                 <DataTemplate x:Key="AgendaHeaderTemplate">
                     <Grid>
-                        <Image Aspect="Fill" Source="{Binding Converter={StaticResource MonthToImageConverter}}"/>
-                        <Label x:Name="label" HorizontalOptions="Start" VerticalOptions="Start" TextColor="Black" FontSize="16" Padding="55, 20, 0, 0" Text="{Binding StringFormat='{0:MMMM yyyy}'}"/>
+                        <Image Aspect="Fill" x:DataType="local:SchedulerViewModel" Source="{Binding Converter={StaticResource MonthToImageConverter}}"/>
+                        <Label x:Name="label" x:DataType="local:SchedulerViewModel" HorizontalOptions="Start" VerticalOptions="Start" TextColor="Black" FontSize="16" Padding="55, 20, 0, 0" Text="{Binding StringFormat='{0:MMMM yyyy}'}"/>
                     </Grid>
                 </DataTemplate>
             </Grid.Resources>
@@ -33,7 +33,7 @@
             </VerticalStackLayout>
             </Grid>
             <Grid Background="#f8f7ff" Grid.Row="1" >
-                <scheduler:SfScheduler View="Agenda" x:Name="Scheduler" AppointmentsSource="{Binding Events}" DisplayDate="{Binding DisplayDate}">
+                <scheduler:SfScheduler View="Agenda" x:Name="Scheduler" x:DataType="local:SchedulerViewModel" AppointmentsSource="{Binding Events}" DisplayDate="{Binding DisplayDate}">
                     <scheduler:SfScheduler.AppointmentMapping>
                         <scheduler:SchedulerAppointmentMapping
                 Subject="EventName"

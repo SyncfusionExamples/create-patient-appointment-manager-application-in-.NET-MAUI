@@ -19,14 +19,13 @@ namespace ManageAppointments
             if (this.loginForm != null && App.Current?.MainPage != null)
             {
                 if (this.loginForm.Validate())
-                {
+                {                 
                     App.Current.MainPage = new NavigationPage();
-                    App.Current.MainPage.Navigation.PushAsync(new AppShell());
-
+                    App.Current.MainPage.Navigation?.PushAsync(new AppShell());
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("", "Please enter the required details", "OK");
+                    await DisplayAlert("", "Please enter the required details", "OK");
                 }
             }
 

@@ -27,8 +27,8 @@ namespace ManageAppointments
             this.EmergencyContactNumber = "88888888"; 
         }
 
-        [DataFormDisplayOptions(ShowLabel =false)]
-        public string Image { get; set; }
+        [DataFormDisplayOptions(ShowLabel = false)]
+        public string Image { get; set; } = string.Empty;
         public string Name { get; set; }    
         public DateTime DOB { get; set; }
         public string Gender { get; set; }
