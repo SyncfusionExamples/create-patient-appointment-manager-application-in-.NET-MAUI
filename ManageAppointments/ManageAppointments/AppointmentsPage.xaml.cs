@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui;
+﻿using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,10 @@ namespace ManageAppointments
 		public AppointmentsPage()
 		{
 			InitializeComponent();
-            var upcomingEvents = (this.BindingContext as SchedulerViewModel).Events.Where(x => (x as Appointment).From > DateTime.Now).ToList();
-            this.Scheduler.AppointmentsSource = upcomingEvents;
+            var upcomingEvents = (this.BindingContext as SchedulerViewModel)?.Events?.Where(x => (x as Appointment).From > DateTime.Now).ToList();
+            if(upcomingEvents != null)
+                this.Scheduler.AppointmentsSource = upcomingEvents;
+
             this.Scheduler.MinimumDateTime = DateTime.Now;
         }
 
@@ -28,7 +31,11 @@ namespace ManageAppointments
 
             if (button != null && button.Text == "Upcoming appointments")
 			{
-               var upcomingEvents =  (this.BindingContext as SchedulerViewModel).Events.Where(x=>(x as Appointment).From > DateTime.Now).ToList();
+               var upcomingEvents =  (this.BindingContext as SchedulerViewModel)?.Events?.Where(x => (x as Appointment).From > DateTime.Now).ToList();
+                if (upcomingEvents == null)
+                {
+                    return;
+                }
 				if(upcomingAppointmentBorder !=null)
 				{
                     upcomingAppointmentBorder.Color = Color.FromArgb("#512BD4");	
@@ -44,7 +51,12 @@ namespace ManageAppointments
             }
             else if (button != null && button.Text == "Past appointments")
 			{
-                var pastAppointments = (this.BindingContext as SchedulerViewModel).Events.Where(x => (x as Appointment).From < DateTime.Now).ToList();
+                var pastAppointments = (this.BindingContext as SchedulerViewModel)?.Events?.Where(x => (x as Appointment).From < DateTime.Now).ToList();
+
+                if(pastAppointments == null)
+                {
+                    return;
+                }
 
                 if (pastAppointmentBordeer != null)
                 {

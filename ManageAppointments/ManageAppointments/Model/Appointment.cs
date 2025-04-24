@@ -14,7 +14,7 @@ namespace ManageAppointments
         private bool isAllDay;
         private string eventName;
         private Brush background;
-        public string location;
+        public string location = string.Empty;
         public Appointment()
         {
             this.from = DateTime.Now;

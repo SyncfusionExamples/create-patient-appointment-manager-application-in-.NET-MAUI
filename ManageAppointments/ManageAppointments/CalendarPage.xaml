@@ -9,7 +9,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <DataTemplate x:Key="dayAppointmentTemplate">
-            <Grid RowDefinitions="0.35*,0.65*" Background="{Binding DataItem.Background}" >
+            <Grid RowDefinitions="0.35*,0.65*" x:DataType="scheduler:SchedulerAppointment" Background="{Binding DataItem.Background}" >
                 <Label Text="{Binding DataItem.EventName}" VerticalOptions="Start"  TextColor="White" LineBreakMode="WordWrap" Margin="5,0" FontSize="12" />
                 <Image Aspect="AspectFit" VerticalOptions="Start"  Grid.Row="1" HorizontalOptions="Center"
                        HeightRequest="30" WidthRequest="30" 
@@ -20,7 +20,7 @@
       
     </ContentPage.Resources>
     <Border Stroke="#F6F6F6" Background="#f8f7ff" StrokeThickness="2">
-        <scheduler:SfScheduler View="Week" AppointmentsSource="{Binding Events}" DisplayDate="{Binding DisplayDate}">
+        <scheduler:SfScheduler View="Week" x:DataType="local:SchedulerViewModel" AppointmentsSource="{Binding Events}" DisplayDate="{Binding DisplayDate}">
             <scheduler:SfScheduler.AppointmentMapping>
                 <scheduler:SchedulerAppointmentMapping
                 Subject="EventName"
